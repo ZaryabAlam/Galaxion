@@ -145,23 +145,23 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-            color: navigationColor,
-            borderRadius: BorderRadius.vertical(
-              top: Radius.circular(36),
-            )),
-        padding: EdgeInsets.all(24),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.menu_outlined)),
-            IconButton(onPressed: () {}, icon: Icon(Icons.search_outlined)),
-            IconButton(
-                onPressed: () {}, icon: Icon(Icons.person_outline_rounded))
-          ],
-        ),
-      ),
+      // bottomNavigationBar: Container(
+      //   decoration: BoxDecoration(
+      //       color: navigationColor,
+      //       borderRadius: BorderRadius.vertical(
+      //         top: Radius.circular(36),
+      //       )),
+      //   padding: EdgeInsets.all(24),
+      //   child: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      //     children: [
+      //       IconButton(onPressed: () {}, icon: Icon(Icons.menu_outlined)),
+      //       IconButton(onPressed: () {}, icon: Icon(Icons.search_outlined)),
+      //       IconButton(
+      //           onPressed: () {}, icon: Icon(Icons.person_outline_rounded))
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

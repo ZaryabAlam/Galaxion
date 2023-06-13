@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:galaxion/screens/about_page.dart';
 import 'package:galaxion/screens/home.dart';
 import 'package:galaxion/screens/search_page.dart';
@@ -28,6 +29,7 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: Center(
         child: _pages.elementAt(_selectedIndex),
       ),
@@ -39,7 +41,7 @@ class _DashboardState extends State<Dashboard> {
 ////////////////////////////////////////////////////////////////////////////////////
   Widget myNavigationBar() {
     return Container(
-      height: 80,
+      height: 70,
       decoration: BoxDecoration(
           color: navigationColor,
           borderRadius: BorderRadius.vertical(
@@ -49,18 +51,18 @@ class _DashboardState extends State<Dashboard> {
       child: BottomNavigationBar(
         elevation: 0,
         type: BottomNavigationBarType.fixed,
-        selectedIconTheme: const IconThemeData(color: Colors.black, size: 30),
+        selectedIconTheme: const IconThemeData(color: Colors.black, size: 25),
         selectedItemColor: Colors.black,
         backgroundColor: navigationColor,
-        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w500),
+        selectedLabelStyle: const TextStyle(
+          fontWeight: FontWeight.w500,
+        ),
         selectedFontSize: 10,
-        iconSize: 25,
+        iconSize: 20,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: _selectedIndex == 0
-                ? const Icon(
-                    Icons.home_rounded,
-                  )
+                ? const FaIcon(FontAwesomeIcons.houseChimney)
                 : const Icon(
                     Icons.home_outlined,
                   ),
@@ -68,21 +70,17 @@ class _DashboardState extends State<Dashboard> {
           ),
           BottomNavigationBarItem(
             icon: _selectedIndex == 1
-                ? const Icon(
-                    Icons.credit_card_rounded,
-                  )
+                ? FaIcon(FontAwesomeIcons.magnifyingGlass)
                 : const Icon(
-                    Icons.credit_card_outlined,
+                    Icons.search_rounded,
                   ),
             label: 'Search',
           ),
           BottomNavigationBarItem(
             icon: _selectedIndex == 2
-                ? const Icon(
-                    Icons.category_rounded,
-                  )
+                ? const FaIcon(FontAwesomeIcons.userAstronaut)
                 : const Icon(
-                    Icons.category_outlined,
+                    Icons.person_outline_rounded,
                   ),
             label: 'About',
           ),

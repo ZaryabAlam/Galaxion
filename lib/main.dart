@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:galaxion/dashboard.dart';
 
+import 'screens/home.dart';
+
 void main() {
   runApp(MyApp());
 }

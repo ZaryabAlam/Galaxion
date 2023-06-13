@@ -15,6 +15,17 @@ class PlanetInfo {
 }
 
 List<PlanetInfo> planets = [
+  PlanetInfo(0,
+      name: 'Sun',
+      iconImage: 'planets/sun1.png',
+      description:
+          "Zipping around the sun in only 88 days, Mercury is the closest planet to the sun, and it's also the smallest, only a little bit larger than Earth's moon. Because its so close to the sun (about two-fifths the distance between Earth and the sun), Mercury experiences dramatic changes in its day and night temperatures: Day temperatures can reach a scorching 840  F (450 C), which is hot enough to melt lead. Meanwhile on the night side, temperatures drop to minus 290 F (minus 180 C).",
+      images: [
+        'https://cdn.pixabay.com/photo/2013/07/18/10/57/mercury-163610_1280.jpg',
+        'https://cdn.pixabay.com/photo/2014/07/01/11/38/planet-381127_1280.jpg',
+        'https://cdn.pixabay.com/photo/2015/06/26/18/48/mercury-822825_1280.png',
+        'https://image.shutterstock.com/image-illustration/mercury-high-resolution-images-presents-600w-367615301.jpg'
+      ]),
   PlanetInfo(1,
       name: 'Mercury',
       iconImage: 'planets/mercury1.png',
@@ -46,6 +57,12 @@ List<PlanetInfo> planets = [
         'https://cdn.pixabay.com/photo/2016/01/19/17/29/earth-1149733_1280.jpg',
         'https://image.shutterstock.com/image-photo/3d-render-planet-earth-viewed-600w-1069251782.jpg'
       ]),
+  PlanetInfo(3,
+      name: 'Moon',
+      iconImage: 'planets/moon1.png',
+      description:
+          "The fourth planet from the sun is Mars, and it's a cold, desert-like place covered in dust. This dust is made of iron oxides, giving the planet its iconic red hue. Mars shares similarities with Earth: It is rocky, has mountains, valleys and canyons, and storm systems ranging from localized tornado-like dust devils to planet-engulfing dust storms. ",
+      images: []),
   PlanetInfo(4,
       name: 'Mars',
       iconImage: 'planets/mars1.png',
@@ -73,6 +90,12 @@ List<PlanetInfo> planets = [
   PlanetInfo(8,
       name: 'Neptune',
       iconImage: 'planets/neptune1.png',
+      description:
+          "The eighth planet from the sun, Neptune is about the size of Uranus and is known for supersonic strong winds. Neptune is far out and cold. The planet is more than 30 times as far from the sun as Earth. Neptune was the first planet predicted to exist by using math, before it was visually detected. Irregularities in the orbit of Uranus led French astronomer Alexis Bouvard to suggest some other planet might be exerting a gravitational tug. German astronomer Johann Galle used calculations to help find Neptune in a telescope. Neptune is about 17 times as massive as Earth and has a rocky core.",
+      images: []),
+  PlanetInfo(9,
+      name: 'Pluto',
+      iconImage: 'planets/pluto1.png',
       description:
           "The eighth planet from the sun, Neptune is about the size of Uranus and is known for supersonic strong winds. Neptune is far out and cold. The planet is more than 30 times as far from the sun as Earth. Neptune was the first planet predicted to exist by using math, before it was visually detected. Irregularities in the orbit of Uranus led French astronomer Alexis Bouvard to suggest some other planet might be exerting a gravitational tug. German astronomer Johann Galle used calculations to help find Neptune in a telescope. Neptune is about 17 times as massive as Earth and has a rocky core.",
       images: []),
