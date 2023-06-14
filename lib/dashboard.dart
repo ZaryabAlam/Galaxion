@@ -41,19 +41,19 @@ class _DashboardState extends State<Dashboard> {
 ////////////////////////////////////////////////////////////////////////////////////
   Widget myNavigationBar() {
     return Container(
-      height: 70,
+      height: 60,
       decoration: BoxDecoration(
           color: navigationColor,
           borderRadius: BorderRadius.vertical(
             top: Radius.circular(36),
           )),
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.all(1),
       child: BottomNavigationBar(
         elevation: 0,
         type: BottomNavigationBarType.fixed,
-        selectedIconTheme: const IconThemeData(color: Colors.black, size: 25),
+        selectedIconTheme: const IconThemeData(color: Colors.black, size: 22),
         selectedItemColor: Colors.black,
-        backgroundColor: navigationColor,
+        backgroundColor: Colors.transparent,
         selectedLabelStyle: const TextStyle(
           fontWeight: FontWeight.w500,
         ),

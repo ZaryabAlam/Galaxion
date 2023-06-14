@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:galaxion/models/planet_data.dart';
+import 'package:galaxion/screens/details_page.dart';
+import 'package:get/get.dart';
 
 import '../utils/constants.dart';
 
@@ -74,68 +76,86 @@ class _HomeState extends State<Home> {
                             space: 8,
                             color: secondaryTextColor)),
                     itemBuilder: (context, index) {
-                      return Stack(
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(height: 50),
-                              Card(
-                                elevation: 8,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(32)),
-                                color: Colors.white,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 15, vertical: 30),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(height: 100),
-                                      Text(
-                                        planets[index].name,
-                                        style: newStyle(
-                                            FontWeight.w900, 40, Colors.black),
-                                      ),
-                                      Text(
-                                        "Solar System",
-                                        style: newStyle(FontWeight.w500, 24,
-                                            Colors.black54),
-                                      ),
-                                      SizedBox(height: 30),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            "Know more",
-                                            style: newStyle(FontWeight.w300, 24,
-                                                secondaryTextColor),
-                                          ),
-                                          Icon(
-                                            Icons.arrow_forward_ios_rounded,
-                                            color: secondaryTextColor,
-                                          )
-                                        ],
-                                      )
-                                    ],
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                pageBuilder: (context, a, b) =>
+                                    DetailPage(planetInfo: planets[index]),
+                              ));
+                          // Get.to(() => PageRouteBuilder(
+                          //       pageBuilder: (context, a, b) =>
+                          //           DetailPage(planetInfo: planets[index]),
+                          //     ));
+                        },
+                        child: Stack(
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SizedBox(height: 50),
+                                Card(
+                                  elevation: 8,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(32)),
+                                  color: Colors.white,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15, vertical: 30),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        SizedBox(height: 100),
+                                        Text(
+                                          planets[index].name,
+                                          style: newStyle(FontWeight.w900, 40,
+                                              Colors.black),
+                                        ),
+                                        Text(
+                                          "Solar System",
+                                          style: newStyle(FontWeight.w500, 24,
+                                              Colors.black54),
+                                        ),
+                                        SizedBox(height: 30),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              "Know more",
+                                              style: newStyle(FontWeight.w300,
+                                                  24, secondaryTextColor),
+                                            ),
+                                            Icon(
+                                              Icons.arrow_forward_ios_rounded,
+                                              color: secondaryTextColor,
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            Align(
+                              alignment: Alignment.topCenter,
+                              child: Container(
+                                height: 250,
+                                width: 250,
+                                child: Hero(
+                                  tag: planets[index].position,
+                                  child: Image(
+                                    image: AssetImage(planets[index].iconImage),
+                                    fit: BoxFit.contain,
                                   ),
                                 ),
-                              )
-                            ],
-                          ),
-                          Align(
-                            alignment: Alignment.topCenter,
-                            child: Container(
-                              height: 250,
-                              width: 250,
-                              child: Image(
-                                image: AssetImage(planets[index].iconImage),
-                                fit: BoxFit.contain,
                               ),
-                            ),
-                          )
-                        ],
+                            )
+                          ],
+                        ),
                       );
                     },
                   ),

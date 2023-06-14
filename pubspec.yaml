@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   card_swiper: ^2.0.4
   font_awesome_flutter: ^10.3.0
+  get: ^4.6.5
 
 dev_dependencies:
   flutter_test:
