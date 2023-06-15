@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:galaxion/dashboard.dart';
+import 'package:galaxion/screens/username_Page.dart';
 import 'package:get/get.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-//test
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -18,6 +18,13 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             visualDensity: VisualDensity.adaptivePlatformDensity),
         debugShowCheckedModeBanner: true,
-        home: Dashboard());
+        home: AnimatedSplashScreen(
+            splash: Image.asset("logo1.png"),
+            backgroundColor: Colors.deepPurple.shade800,
+            // splashTransition: SplashTransition.rotationTransition,
+            // animationDuration: Duration(seconds: 5),
+            // duration: 1000,
+            // splashIconSize: 150,
+            nextScreen: UsernamePage()));
   }
 }
