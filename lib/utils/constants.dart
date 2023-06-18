@@ -8,6 +8,14 @@ Color navigationColor = Color(0xFF6751B5);
 Color gradientStartColor = Color(0xFF0050AC);
 Color gradientEndColor = Color(0xFF9354B9);
 Color dividerColor = Colors.black38;
+Color transparent = Colors.transparent;
+
+late double w, h;
+
+void HeightWidth(BuildContext context) {
+  h = MediaQuery.of(context).size.height;
+  w = MediaQuery.of(context).size.width;
+}
 
 TextStyle newStyle(fWeight, fSize, fColor) {
   return TextStyle(
@@ -15,4 +23,12 @@ TextStyle newStyle(fWeight, fSize, fColor) {
       fontSize: fSize,
       color: fColor,
       fontWeight: fWeight);
+}
+
+TextStyle astStyle(fsize) {
+  return TextStyle(
+    fontSize: fsize,
+    color: Colors.white,
+    fontFamily: "DancingScript",
+  );
 }
