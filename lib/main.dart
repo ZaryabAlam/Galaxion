@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         title: "Galaxion",
         theme: ThemeData(
-            primarySwatch: Colors.blue,
+            primarySwatch: Colors.purple,
             visualDensity: VisualDensity.adaptivePlatformDensity),
         debugShowCheckedModeBanner: true,
         home: AnimatedSplashScreen(
