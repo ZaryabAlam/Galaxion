@@ -9,6 +9,7 @@ Color gradientStartColor = Color(0xFF0050AC);
 Color gradientEndColor = Color(0xFF9354B9);
 Color dividerColor = Colors.black38;
 Color transparent = Colors.transparent;
+Color infoDialogColor = Colors.blueGrey.shade500;
 
 late double w, h;
 
