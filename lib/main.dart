@@ -4,7 +4,6 @@ import 'package:galaxion/screens/username_Page.dart';
 import 'package:get/get.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 
-//test
 void main() {
   runApp(MyApp());
 }
