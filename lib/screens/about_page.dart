@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:galaxion/utils/constants.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
@@ -102,25 +103,36 @@ class _AboutPageState extends State<AboutPage> {
                                             titleTextColor),
                                       ),
                                       SizedBox(height: 20),
-                                      Text(
-                                        "You're an Astronaut!",
-                                        style: TextStyle(
-                                          fontSize: 25,
-                                          color: Colors.white,
-                                          fontFamily: "DancingScript",
+                                      Animate(
+                                        effects: [
+                                          ShimmerEffect(
+                                            color: Colors.black,
+                                            duration: 700.ms,
+                                          )
+                                        ],
+                                        child: Text(
+                                          "You're an Astronaut!",
+                                          style: TextStyle(
+                                            fontSize: 25,
+                                            color: Colors.white,
+                                            fontFamily: "DancingScript",
+                                          ),
                                         ),
-                                      ),
+                                      )
                                     ],
                                   ),
                                 ),
                               ),
                             ),
-                            Positioned(
-                              top: 2,
-                              child: FaIcon(
-                                FontAwesomeIcons.userAstronaut,
-                                color: Colors.white,
-                                size: 150,
+                            Animate(
+                              effects: [FadeEffect(), ScaleEffect()],
+                              child: Positioned(
+                                top: 2,
+                                child: FaIcon(
+                                  FontAwesomeIcons.userAstronaut,
+                                  color: Colors.white,
+                                  size: 150,
+                                ),
                               ),
                             ),
                           ],
@@ -182,16 +194,25 @@ class _AboutPageState extends State<AboutPage> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(60)),
         title: Column(
           children: [
-            const Text(
-              "Galaxion",
+            Animate(
+              effects: [
+                ShimmerEffect(
+                  color: Colors.white,
+                  duration: 700.ms,
+                )
+              ],
+              child: Text("Galaxion",
+                  style: newStyle(FontWeight.w600, 32, Colors.black54)),
             ),
           ],
         ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text("Flutter 3.3.9"),
             Text("Version 1.0.1"),
+            SizedBox(height: 8),
+            Text("Flutter 3.3.9"),
+            SizedBox(height: 8),
             Text("\u00a9 DevCat | Zaryab Alam"),
           ],
         ),

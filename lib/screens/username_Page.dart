@@ -114,34 +114,33 @@ class _UsernamePageState extends State<UsernamePage>
                   height: 55,
                   color: Colors.transparent,
                   child: TextButton(
-                      onPressed: () {
-                        if (numberForm.currentState!.validate()) {
-                          setState(() async {
-                            isValidForm = true;
-                            isLoading = true;
-                            SharedPreferences prefs =
-                                await SharedPreferences.getInstance();
-                            await prefs.setString('savedUsername',
-                                usernameController.text.trim());
-                            Get.to(() => Dashboard());
-                          });
-                        } else {
-                          setState(() {
-                            isValidForm = false;
-                          });
-                        }
-                      },
-                      style: TextButton.styleFrom(
-                          elevation: 2,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(80)),
-                          primary: Colors.purple,
-                          backgroundColor: Colors.grey.shade200,
-                          minimumSize: Size.fromHeight(70)),
-                      child: Text(
-                        "Continue",
-                        style: newStyle(FontWeight.w600, 18, Colors.black54),
-                      )),
+                    onPressed: () {
+                      if (numberForm.currentState!.validate()) {
+                        setState(() async {
+                          isValidForm = true;
+                          isLoading = true;
+                          SharedPreferences prefs =
+                              await SharedPreferences.getInstance();
+                          await prefs.setString(
+                              'savedUsername', usernameController.text.trim());
+                          Get.to(() => Dashboard());
+                        });
+                      } else {
+                        setState(() {
+                          isValidForm = false;
+                        });
+                      }
+                    },
+                    style: TextButton.styleFrom(
+                        elevation: 2,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(80)),
+                        primary: Colors.purple,
+                        backgroundColor: Colors.grey.shade200,
+                        minimumSize: Size.fromHeight(70)),
+                    child: Text("CONTINUE",
+                        style: newStyle(FontWeight.w600, 18, Colors.black54)),
+                  ),
                 )
               ],
             ),
