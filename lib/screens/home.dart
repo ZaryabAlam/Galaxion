@@ -19,7 +19,7 @@ class _HomeState extends State<Home> {
     final _w = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      backgroundColor: Colors.red,
+      backgroundColor: gradientEndColor,
       body: SingleChildScrollView(
         child: Container(
           decoration: BoxDecoration(

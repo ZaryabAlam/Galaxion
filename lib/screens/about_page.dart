@@ -23,7 +23,7 @@ class _AboutPageState extends State<AboutPage> {
     setState(() {
       myUsername = savedUsername ?? 'Not Registered';
       print("Shared Preferences Response1: $myUsername");
-      print("Shared Preferences Response2: $savedUsername");
+      // print("Shared Preferences Response2: $savedUsername");
     });
   }
 
