@@ -1,9 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:galaxion/utils/constants.dart';
 import 'package:get/get.dart';
 
 import '../models/planet_data.dart';
+import 'fullScreenImage_page.dart';
 
 class DetailPage extends StatelessWidget {
   final PlanetInfo planetInfo;
@@ -64,20 +66,42 @@ class DetailPage extends StatelessWidget {
                       itemCount: planetInfo.images.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
-                        return Card(
-                          clipBehavior: Clip.antiAlias,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25)),
-                          child: AspectRatio(
-                            aspectRatio: 1,
-                            child: Image(
-                              image: NetworkImage(planetInfo.images[index]),
-                              fit: BoxFit.cover,
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FullScreenImageScreen(
+                                  imagePaths: planetInfo.images,
+                                  initialIndex: index,
+                                ),
+                              ),
+                            );
+                          },
+                          child: Card(
+                            clipBehavior: Clip.antiAlias,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25)),
+                            child: AspectRatio(
+                              aspectRatio: 1,
+                              child: CachedNetworkImage(
+                                imageUrl: planetInfo.images[index],
+                                placeholder: (context, url) => Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                                errorWidget: (context, url, error) =>
+                                    Icon(Icons.error),
+                                fit: BoxFit.cover,
+                              ),
+                              // child: Image(
+                              //   image: NetworkImage(planetInfo.images[index]),
+                              //   fit: BoxFit.cover,
+                              // ),
                             ),
                           ),
                         );
                       }),
-                )
+                ),
               ],
             ),
           ),

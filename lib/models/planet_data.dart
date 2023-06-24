@@ -47,7 +47,7 @@ List<PlanetInfo> planets = [
       images: [
         'https://fox5sandiego.com/wp-content/uploads/sites/15/2023/06/AdobeStock_58627825-1.jpeg?w=2560&h=1440&crop=1',
         'https://earthhow.com/wp-content/uploads/2018/08/Venus-900x900.jpg',
-        'https://explanet.info/images/Ch07/07_11_internalstructure.jpg',
+        'https://starwalk.space/gallery/images/amazing-planet-venus/1920x1080.jpg',
         'https://www.sciencenews.org/wp-content/uploads/2023/04/033123_MT_Venus_feat.jpg',
         'https://images.newscientist.com/wp-content/uploads/2021/04/29112534/2amj054_web.jpg?crop=1:1,smart&width=1200&height=1200&upscale=true',
       ]),

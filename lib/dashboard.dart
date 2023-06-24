@@ -28,12 +28,18 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBody: true,
-      body: Center(
-        child: _pages.elementAt(_selectedIndex),
+    return WillPopScope(
+      onWillPop: () async {
+        final shouldPop = await exitDialog(context);
+        return shouldPop!;
+      },
+      child: Scaffold(
+        extendBody: true,
+        body: Center(
+          child: _pages.elementAt(_selectedIndex),
+        ),
+        bottomNavigationBar: myNavigationBar(),
       ),
-      bottomNavigationBar: myNavigationBar(),
     );
   }
 

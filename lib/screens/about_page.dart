@@ -22,7 +22,7 @@ class _AboutPageState extends State<AboutPage> {
     String? savedUsername = prefs.getString('savedUsername');
     setState(() {
       myUsername = savedUsername ?? 'Not Registered';
-      print("Shared Preferences Response1: $myUsername");
+      print("Shared Preferences AboutPage: $myUsername");
       // print("Shared Preferences Response2: $savedUsername");
     });
   }
@@ -98,7 +98,7 @@ class _AboutPageState extends State<AboutPage> {
                                     children: [
                                       SizedBox(height: 20),
                                       Text(
-                                        "$myUsername!",
+                                        "$myUsername",
                                         style: newStyle(FontWeight.w800, 28,
                                             titleTextColor),
                                       ),
@@ -128,6 +128,17 @@ class _AboutPageState extends State<AboutPage> {
                               effects: [FadeEffect(), ScaleEffect()],
                               child: Positioned(
                                 top: 2,
+                                child: FaIcon(
+                                  FontAwesomeIcons.userAstronaut,
+                                  color: Colors.black,
+                                  size: 153,
+                                ),
+                              ),
+                            ),
+                            Animate(
+                              effects: [FadeEffect(), ScaleEffect()],
+                              child: Positioned(
+                                top: 4,
                                 child: FaIcon(
                                   FontAwesomeIcons.userAstronaut,
                                   color: Colors.white,
@@ -209,7 +220,7 @@ class _AboutPageState extends State<AboutPage> {
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text("Version 1.0.1"),
+            Text("Version 1.0.2"),
             SizedBox(height: 8),
             Text("Flutter 3.3.9"),
             SizedBox(height: 8),
