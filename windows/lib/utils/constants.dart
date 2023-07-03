@@ -19,7 +19,7 @@ void HeightWidth(BuildContext context) {
   w = MediaQuery.of(context).size.width;
 }
 
-TextStyle newStyle(fWeight, double? fSize, fColor) {
+TextStyle newStyle(fWeight, fSize, fColor) {
   return TextStyle(
       fontFamily: "Avenir",
       fontSize: fSize,
@@ -27,7 +27,7 @@ TextStyle newStyle(fWeight, double? fSize, fColor) {
       fontWeight: fWeight);
 }
 
-TextStyle astStyle(double? fsize) {
+TextStyle astStyle(fsize) {
   return TextStyle(
     fontSize: fsize,
     color: Colors.white,

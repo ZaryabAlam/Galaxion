@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:galaxion/dashboard.dart';
 import 'package:galaxion/utils/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:get/get.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'dart:math' as math;
+import 'package:get/get.dart';
 
 class UsernamePage extends StatefulWidget {
   const UsernamePage({super.key});
@@ -20,6 +19,14 @@ class _UsernamePageState extends State<UsernamePage>
   bool isValidForm = false;
   bool isLoading = false;
   late AnimationController _controller;
+
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(seconds: 10),
+      vsync: this,
+    )..repeat();
+  }
 
   @override
   void dispose() {
@@ -39,7 +46,7 @@ class _UsernamePageState extends State<UsernamePage>
         constraints: const BoxConstraints.expand(),
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage("assets/background1.jpg"),
+          image: AssetImage("background1.jpg"),
           fit: BoxFit.cover,
         )),
         child: Scaffold(
@@ -65,17 +72,14 @@ class _UsernamePageState extends State<UsernamePage>
                       animation: _controller,
                       builder: (_, child) {
                         return Transform.rotate(
-                          angle: _controller.value * 1.5 * math.pi,
+                          angle: _controller.value * 2 * math.pi,
                           child: child,
                         );
                       },
-                      child:
-                          Image.asset("assets/logo1.png", fit: BoxFit.contain),
-
-                      // child: Image(
-                      //   image: AssetImage("assets/logo1.png"),
-                      //   fit: BoxFit.contain,
-                      // ),
+                      child: Image(
+                        image: AssetImage("logo1.png"),
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
                   SizedBox(height: 20),
@@ -151,141 +155,4 @@ class _UsernamePageState extends State<UsernamePage>
       ),
     );
   }
-
-  ///////////////////////////// CONNECTIVITY /////////////////////////////
-///////////////////////////////////////////////////////////////////////
-  Future<bool> checkInternetConnectivity() async {
-    var connectivityResult = await Connectivity().checkConnectivity();
-    return connectivityResult != ConnectivityResult.none;
-  }
-
-  void initState() {
-    super.initState();
-    checkInternetConnectivity().then((isConnected) {
-      if (!isConnected) {
-        print("No Internet");
-        showNoInternetDialog();
-      } else {
-        // setState(() {
-        //   isConnected = true;
-        // });
-        print("Yes Internet");
-      }
-    });
-    _controller = AnimationController(
-      duration: const Duration(seconds: 10),
-      vsync: this,
-    )..repeat();
-  }
-
-  void showNoInternetDialog() {
-    print("No Internet");
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: infoDialogColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(60)),
-        title: Column(
-          children: [
-            Text("No Internet!",
-                style: newStyle(FontWeight.w600, 32, Colors.black54)),
-          ],
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text("Check your connection and try again."),
-          ],
-        ),
-        actions: <Widget>[
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-            child: Container(
-              height: 50,
-              color: Colors.transparent,
-              child: TextButton(
-                onPressed: () {
-                  isLoading = true;
-                  showLoaderDialog(context);
-                  loader();
-                  // Get.back();
-                  // Get.to(() => UsernamePage());
-                },
-                style: TextButton.styleFrom(
-                    elevation: 2,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(80)),
-                    primary: Colors.purple,
-                    backgroundColor: Colors.grey.shade200,
-                    minimumSize: Size.fromHeight(70)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("OKAY",
-                        style: newStyle(FontWeight.w600, 18, Colors.black54)),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void loader() async {
-    await Future.delayed(const Duration(seconds: 3));
-    setState(() {
-      isLoading = false;
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const UsernamePage()),
-      );
-      // Get.to(() => UsernamePage());
-      // navigator!.pop();
-    });
-  }
-
-  showLoaderDialog(BuildContext context) async {
-    AlertDialog alert = AlertDialog(
-      backgroundColor: transparent,
-      contentPadding: EdgeInsets.all(0),
-      content: new Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            height: 60,
-            width: 60,
-            padding: EdgeInsets.all(2),
-            decoration: BoxDecoration(
-              color: Colors.white60,
-              shape: BoxShape.circle,
-            ),
-            child: AnimatedBuilder(
-              animation: _controller,
-              builder: (_, child) {
-                return Transform.rotate(
-                  angle: _controller.value * 6 * math.pi,
-                  child: child,
-                );
-              },
-              child: Image.asset("assets/logo1.png", fit: BoxFit.contain),
-            ),
-          ),
-          SizedBox(height: 10),
-          Text("LOADING", style: newStyle(FontWeight.w600, 15, Colors.white60)),
-        ],
-      ),
-    );
-    showDialog(
-      barrierDismissible: false,
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
-    );
-  }
-////////////////////////CONNECTIVITY///////////////////////////////
-//////////////////////////////////////////////////////////////////
 }

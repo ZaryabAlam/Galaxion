@@ -40,7 +40,7 @@ class _AboutPageState extends State<AboutPage> {
       constraints: const BoxConstraints.expand(),
       decoration: const BoxDecoration(
           image: DecorationImage(
-        image: AssetImage("assets/background1.jpg"),
+        image: AssetImage("background1.jpg"),
         fit: BoxFit.cover,
       )),
       child: Scaffold(
