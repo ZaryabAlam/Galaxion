@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:galaxion/screens/splash_page.dart';
-
 import 'package:get/get.dart';
 
+//test
 void main() {
   runApp(MyApp());
 }
