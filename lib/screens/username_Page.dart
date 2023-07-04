@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:galaxion/dashboard.dart';
 import 'package:galaxion/utils/constants.dart';
@@ -5,6 +6,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:get/get.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'dart:math' as math;
+import 'package:intl/intl.dart';
+
+import '../utils/mySnackbar.dart';
 
 class UsernamePage extends StatefulWidget {
   const UsernamePage({super.key});
@@ -124,7 +128,9 @@ class _UsernamePageState extends State<UsernamePage>
                                 await SharedPreferences.getInstance();
                             await prefs.setString('savedUsername',
                                 usernameController.text.trim());
-                            Get.to(() => Dashboard());
+                            showLoaderDialog(context);
+                            dataUpload(context);
+                            // Get.to(() => Dashboard());
                           });
                         } else {
                           setState(() {
@@ -247,7 +253,53 @@ class _UsernamePageState extends State<UsernamePage>
   }
 
   showLoaderDialog(BuildContext context) async {
-    AlertDialog alert = AlertDialog(
+    AlertDialog alert = loadingIcon();
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
+////////////////////////Upload Username///////////////////////////////
+//////////////////////////////////////////////////////////////////
+  Future<bool?> dataUpload(BuildContext context) async {
+    DateTime now = DateTime.now();
+    String formattedTime = DateFormat.jm().format(now);
+    String formattedDate = DateFormat('EEE dd MMM yyyy').format(now);
+    try {
+      Map<String, dynamic> user = {
+        "Username": usernameController.text.trim(),
+        "CreateTime": formattedTime,
+        "CreateDate": formattedDate,
+      };
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(usernameController.text.trim())
+          .set(user)
+          .then((value) {
+        Future.delayed(const Duration(seconds: 5));
+        Get.showSnackbar(mySnackbar("Registration Successful!", Colors.green,
+            Icons.check_circle_rounded));
+        setState(() {
+          isLoading = false;
+          navigator!.pop();
+        });
+        Get.to(() => Dashboard());
+      });
+    } catch (e) {
+      print(e.toString());
+      Get.showSnackbar(mySnackbar(
+          "Something went wrong!", Colors.red, Icons.warning_rounded));
+    }
+
+    return true;
+  }
+
+  AlertDialog loadingIcon() {
+    return AlertDialog(
       backgroundColor: transparent,
       contentPadding: EdgeInsets.all(0),
       content: new Column(
@@ -278,14 +330,5 @@ class _UsernamePageState extends State<UsernamePage>
         ],
       ),
     );
-    showDialog(
-      barrierDismissible: false,
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
-    );
   }
-////////////////////////CONNECTIVITY///////////////////////////////
-//////////////////////////////////////////////////////////////////
 }
