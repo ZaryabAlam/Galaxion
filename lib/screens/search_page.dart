@@ -64,7 +64,7 @@ class _SearchPageState extends State<SearchPage> {
                         hintText: "Search a planet",
                         suffixIcon: Padding(
                           padding: const EdgeInsets.symmetric(
-                              vertical: 8, horizontal: 20),
+                              vertical: 15, horizontal: 20),
                           child: FaIcon(FontAwesomeIcons.magnifyingGlass),
                         ),
                         hintStyle: TextStyle(color: Colors.black38),
@@ -113,39 +113,31 @@ class _SearchPageState extends State<SearchPage> {
                                                         filteredPlanets[index]),
                                           ));
                                     },
-                                    child: Container(
-                                        alignment: Alignment.center,
-                                        height: 60,
+                                    child: ListTile(
+                                      leading: Container(
+                                        height: 50,
+                                        width: 50,
                                         decoration: BoxDecoration(
-                                            color: Colors.transparent,
+                                            color: Colors.white,
                                             borderRadius:
                                                 BorderRadius.circular(15)),
-                                        child: ListTile(
-                                          leading: Container(
-                                            height: 50,
-                                            width: 50,
-                                            decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(15)),
-                                            child: Image(
-                                              image: AssetImage(
-                                                  filteredPlanets[index]
-                                                      .iconImage),
-                                              fit: BoxFit.contain,
-                                            ),
-                                          ),
-                                          title: Text(
-                                            filteredPlanets[index].name,
-                                            style: newStyle(FontWeight.w600, 18,
-                                                Colors.black54),
-                                          ),
-                                          subtitle: Text(
-                                            "Solar System",
-                                            style: newStyle(FontWeight.w500, 15,
-                                                Colors.black45),
-                                          ),
-                                        )),
+                                        child: Image(
+                                          image: AssetImage(
+                                              filteredPlanets[index].iconImage),
+                                          fit: BoxFit.contain,
+                                        ),
+                                      ),
+                                      title: Text(
+                                        filteredPlanets[index].name,
+                                        style: newStyle(FontWeight.w600, 18,
+                                            Colors.black54),
+                                      ),
+                                      subtitle: Text(
+                                        "Solar System",
+                                        style: newStyle(FontWeight.w500, 15,
+                                            Colors.black45),
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
