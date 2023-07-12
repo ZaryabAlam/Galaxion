@@ -42,21 +42,26 @@ class _HomeState extends State<Home> {
                           textAlign: TextAlign.left,
                           style: newStyle(FontWeight.w900, 44, Colors.white),
                         ),
-                        DropdownButton(
-                          items: [
-                            DropdownMenuItem(
-                              child: Text(
-                                "Solar System",
-                                textAlign: TextAlign.left,
-                                style: newStyle(
-                                    FontWeight.w500, 24, Colors.white54),
-                              ),
-                            )
-                          ],
-                          onChanged: ((value) {}),
-                          underline: SizedBox(),
-                          icon: Icon(Icons.keyboard_arrow_down_rounded),
-                        )
+                        // DropdownButton(
+                        //   items: [
+                        //     DropdownMenuItem(
+                        //       child: Text(
+                        //         "Solar System",
+                        //         textAlign: TextAlign.left,
+                        //         style: newStyle(
+                        //             FontWeight.w500, 24, Colors.white54),
+                        //       ),
+                        //     )
+                        //   ],
+                        //   onChanged: ((value) {}),
+                        //   underline: SizedBox(),
+                        //   icon: Icon(Icons.keyboard_arrow_down_rounded),
+                        // ),
+                        Text(
+                          "Solar System",
+                          textAlign: TextAlign.left,
+                          style: newStyle(FontWeight.w500, 24, Colors.white54),
+                        ),
                       ],
                     ),
                   ),
