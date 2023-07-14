@@ -4,6 +4,7 @@ import 'package:galaxion/screens/splash_page.dart';
 import 'package:get/get.dart';
 
 //test
+//test
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
